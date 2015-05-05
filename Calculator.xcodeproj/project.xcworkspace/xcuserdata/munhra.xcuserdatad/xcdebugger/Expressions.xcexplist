@@ -54,6 +54,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Calculator.ViewController.appendDigit (Calculator.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "strrange">
+            </PersistentString>
+            <PersistentString
+               value = "strrange!">
+            </PersistentString>
+            <PersistentString
+               value = "strrange!.startIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Calculator.ViewController.displayValue.getter : Swift.Double:ViewController.swift">
          <PersistentStrings>
             <PersistentString

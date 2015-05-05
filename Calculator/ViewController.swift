@@ -20,26 +20,19 @@ class ViewController: UIViewController {
     let locale = NSLocale(localeIdentifier: "en_US")
     let formater = NSNumberFormatter()
     
-    
     var displayValue: Double {
-        
         get{
             formater.locale = locale
             return formater.numberFromString(display.text!)!.doubleValue
         }
         
         set{//implicity newValue
-            
-            
             display.text = "\(newValue)"
             userIsInAMiddleOfTypingNumber = false
         }
-    
     }
     
     @IBAction func operate(sender: UIButton) {
-        
-        
         let operation = sender.currentTitle!
         
         if userIsInAMiddleOfTypingNumber {
@@ -52,12 +45,18 @@ class ViewController: UIViewController {
             case "÷":performOperation {$1 / $0}
             case "-":performOperation {$1 - $0}
             case "√":performOperation {sqrt($0)}
-            default:break
+            case "sin":performOperation {sin($0)}
+            case "cos":performOperation {cos($0)}
+            case "Pi":performOperation(M_PI)
+        default:break
         }
     }
     
+    private func performOperation(operation: Double){
+        displayValue = operation
+    }
+    
     private func performOperation(operation: Double -> Double){
-        
         if operandStack.count >= 1 {
             displayValue = operation(operandStack.removeLast())
             enter()
@@ -81,16 +80,13 @@ class ViewController: UIViewController {
         let digit = sender.currentTitle!
         
         println("Digit \(digit)")
-        
+    
         if userIsInAMiddleOfTypingNumber {
-            display.text = display.text! + digit
+            display.text = display.text! + (display.text!.rangeOfString(".") == nil || digit != "." ?  digit : "")
         }else{
             display.text = digit
             userIsInAMiddleOfTypingNumber = true
         }
-        
-        
-    
     }
 }
 
