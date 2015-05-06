@@ -54,6 +54,7 @@ class ViewController: UIViewController {
     
     private func performOperation(operation: Double){
         displayValue = operation
+        enter()
     }
     
     private func performOperation(operation: Double -> Double){
