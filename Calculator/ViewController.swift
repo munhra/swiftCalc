@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
    
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var historyLabel: UILabel!
+    
     var userIsInAMiddleOfTypingNumber = false
     var operandStack = Array<Double>()
     // to convert a string lets say "33.3" to double 33.3 
@@ -36,8 +38,10 @@ class ViewController: UIViewController {
         let operation = sender.currentTitle!
         
         if userIsInAMiddleOfTypingNumber {
-            enter()
+            enter(UIButton())
         }
+        
+        historyLabel.text = historyLabel.text! + " " + operation
         
         switch operation{
             case "ⅹ":performOperation {$0 * $1} // closure very simplified
@@ -54,29 +58,34 @@ class ViewController: UIViewController {
     
     private func performOperation(operation: Double){
         displayValue = operation
-        enter()
+        enter(nil)
     }
     
     private func performOperation(operation: Double -> Double){
         if operandStack.count >= 1 {
             displayValue = operation(operandStack.removeLast())
-            enter()
+            enter(nil)
         }
     }
     
     func performOperation(operation: (Double, Double) -> Double){
         if operandStack.count >= 2 {
             displayValue = operation(operandStack.removeLast() , operandStack.removeLast())
-            enter()
+            enter(nil)
         }
     }
     
-    @IBAction func enter() {
+    @IBAction func enter(sender: UIButton?) {
+        
+        if sender != nil && sender!.currentTitle! == "⏎" {
+            historyLabel.text = historyLabel.text! + " " + display.text!
+        }
+        
         userIsInAMiddleOfTypingNumber = false
         operandStack.append(displayValue)
         println("Operand stack = \(operandStack)")
     }
-    
+   
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         
@@ -89,5 +98,13 @@ class ViewController: UIViewController {
             userIsInAMiddleOfTypingNumber = true
         }
     }
+    
+    @IBAction func clear() {
+        display.text = "0"
+        historyLabel.text = ""
+        operandStack.removeAll(keepCapacity: false)
+        userIsInAMiddleOfTypingNumber = false
+    }
+    
 }
 

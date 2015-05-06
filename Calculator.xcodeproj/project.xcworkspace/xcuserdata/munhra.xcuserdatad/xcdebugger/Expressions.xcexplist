@@ -14,13 +14,13 @@
          contextName = "Calculator.ViewController.displayValue.setter : Swift.Double:ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "&quot;\(newValue)&quot;">
+               value = "display.text = &quot;\(newValue)&quot;">
             </PersistentString>
             <PersistentString
                value = "display.text">
             </PersistentString>
             <PersistentString
-               value = "display.text = &quot;\(newValue)&quot;">
+               value = "&quot;\(newValue)&quot;">
             </PersistentString>
             <PersistentString
                value = "display.text!">
@@ -57,13 +57,13 @@
          contextName = "Calculator.ViewController.appendDigit (Calculator.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "strrange">
+               value = "strrange!.startIndex">
             </PersistentString>
             <PersistentString
                value = "strrange!">
             </PersistentString>
             <PersistentString
-               value = "strrange!.startIndex">
+               value = "strrange">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -71,16 +71,27 @@
          contextName = "Calculator.ViewController.displayValue.getter : Swift.Double:ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "display.text!">
+               value = "NSNumberFormatter().numberFromString(&quot;1&quot;)!.doubleValue">
             </PersistentString>
             <PersistentString
-               value = "NSNumberFormatter().numberFromString(&quot;1&quot;)!.doubleValue">
+               value = "NSNumberFormatter().numberFromString(display.text!)!.doubleValue">
             </PersistentString>
             <PersistentString
                value = "display.text = &quot;22&quot;">
             </PersistentString>
             <PersistentString
-               value = "NSNumberFormatter().numberFromString(display.text!)!.doubleValue">
+               value = "display.text!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Calculator.ViewController.enter (Calculator.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.titleLabel!">
+            </PersistentString>
+            <PersistentString
+               value = "sender.currentTitle!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
